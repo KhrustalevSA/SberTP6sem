@@ -1,0 +1,9 @@
+math_app\entitys\MathEntity.class
+math_app\controllers\MathController.class
+math_app\math_service\Multiply.class
+math_app\math_service\MathOperations.class
+math_app\math_service\MathService.class
+math_app\math_service\Sum.class
+math_app\math_service\Subtraction.class
+math_app\math_service\Divide.class
+math_app\App.class

@@ -1,42 +1,28 @@
 package math_app.entitys;
 
-import math_app.math_service.*;
-import org.jcp.xml.dsig.internal.MacOutputStream;
-
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import math_app.math_service.MathServic;
 
 public class MathEntity {
     private String operation;
     private double firstValue;
     private double secondValue;
-    private Set<MathOperations> mathOperationsSet = new HashSet<MathOperations>();
+    private String rez;
 
     public MathEntity(String operation, double firstValue, double secondValue){
-        this.firstValue = firstValue;
+        MathServic service = new MathServic(operation,firstValue,secondValue);
         this.secondValue = secondValue;
         this.operation = operation;
-        mathOperationsSet.add(new Sum());
-        mathOperationsSet.add(new Divide());
-        mathOperationsSet.add(new Multiply());
-        mathOperationsSet.add(new Subtraction());
-
-    }
-
-    public String doOperation(){
-        MathOperations rez = null;
-        for (MathOperations operations : mathOperationsSet){
-            if (Objects.equals(operations.getOperationWord(), operation)){
-                rez = operations;
-            }
-        }
-        if (rez != null)
-        return firstValue + " " + rez.getOperationSign() + " " + secondValue + " = " + rez.getOperation(firstValue, secondValue);
-        else return "enter valid URL like: http://localhost:8080/math?operation=mul&firstValue=2&secondValue=2";
+        this.firstValue = firstValue;
+        this.rez = service.doOperation();
     }
 
 
+    public String getRez() {
+        return rez;
+    }
+    public void setRez(String rez) {
+        this.rez = rez;
+    }
     public String getOperation() {
         return operation;
     }
