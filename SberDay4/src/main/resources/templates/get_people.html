@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container mt-5 mb-5">
+    <form action="/get" method="post">
+        <button type="submit" class="btn btn-success">Добавить еще</button>
+    </form>
+</div>
+
+<div th:each="i : ${peopleList}">
+    <span th:text="${i.getFirstName()}"></span>
+    <span th:text="${i.getSecondName()}"></span>
+    <span th:text="${i.getLastName()}"></span>
+</div>
+</body>
+</html>
