@@ -4,6 +4,7 @@ import controllers_app.entitys.PeopleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,28 +20,27 @@ public class MainController {
         return "homepage";
     }
 
-    @GetMapping("get")
+    @GetMapping("/get")
     public String getAll(Model model){
         model.addAttribute("peopleList", this.list);
         return "get_people";
     }
 
-    @PostMapping("get")
+    @PostMapping("/get")
     public String getAllPost(){
         return "redirect:/add";
     }
 
     @GetMapping("/add")
-    public String addPeopleGet(){
+    public String addPeopleGet(Model model){
+        model.addAttribute("peopleEntity",new PeopleEntity());
         return "add_people";
     }
 
     @PostMapping("/add")
-    public String addPeoplePost(Model model,@RequestParam(value = "firstName") String  firstName,
-                                  @RequestParam(value = "secondName") String  secondName,
-                                  @RequestParam(value = "lastName") String lastName){
-        PeopleEntity entity = new PeopleEntity(firstName,secondName,lastName);
-        list.add(entity);
+    public String addPeoplePost(Model model,@ModelAttribute PeopleEntity receivedEntity){
+        list.add(receivedEntity);
+        model.addAttribute("peopleList", list);
         return "redirect:/get";
     }
 

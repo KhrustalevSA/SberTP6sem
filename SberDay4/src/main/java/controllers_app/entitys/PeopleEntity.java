@@ -5,6 +5,10 @@ public class PeopleEntity {
     private String secondName;
     private String lastName;
 
+    public PeopleEntity(){
+
+    }
+
     public PeopleEntity(String firstName, String secondName, String lastName){
         this.firstName = firstName;
         this.secondName = secondName;

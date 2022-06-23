@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>add</title>
 </head>
 <body>
 <div class="container mt-5 mb-5">
-    <form action="/add" method="post">
-        <input type="text" name="firstName" placeholder="Enter first name" class="form-control ">
-        <input type="text" name="secondName" placeholder="Enter second name" class="form-control ">
-        <input type="text" name="lastName" placeholder="Enter last name" class="form-control ">
-
+    <form action="#" th:action="@{/add}" th:object="${peopleEntity}" method="post">
+        <input type="text" th:field="*{firstName}" placeholder="Enter first name" class="form-control"/>
+        <input type="text" th:field="*{secondName}" placeholder="Enter second name" class="form-control"/>
+        <input type="text" th:field="*{lastName}" placeholder="Enter last name" class="form-control "/>
         <button type="submit" class="btn btn-success">Добавить</button>
     </form>
+
 </div>
 </body>
 </html>
